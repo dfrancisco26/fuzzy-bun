@@ -9,11 +9,23 @@ logoutButton.addEventListener('click', () => {
     logout();
 });
 
-function displayFamilies() {
+export async function displayFamilies() {
     // fetch families from supabase
-
+    familiesEl.textContent = '';
     // clear out the familiesEl
+    const families = await getFamilies();
 
+    for (let family of families) {
+        const familyEl = document.createElement('div');
+        const h3 = document.createElement('h3');
+        h3.textContent = family.name;
+        familyEl.classList.add('family');
+        familyEl.append(h3);
+        familiesEl.append(familyEl);
+        console.log(familiesEl);
+    }
+}
+    //}
     //for (let family of families) {
         // create three elements for each family, one for the whole family, one to hold the name, and one to hold the bunnies
         // your HTML Element should look like this:
@@ -30,7 +42,7 @@ function displayFamilies() {
         //    make an element with the css class 'bunny', and put the bunny's name in the text content
         //    add an event listener to the bunny el. On click, delete the bunny, then refetch and redisplay all families.
         // append this bunnyEl to the bunniesEl
-    }
+    //}
 
     // append the bunniesEl and nameEl to the familyEl
 
