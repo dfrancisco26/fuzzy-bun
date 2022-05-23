@@ -14,7 +14,7 @@ function displayFamilies() {
 
     // clear out the familiesEl
 
-    for (let family of families) {
+    //for (let family of families) {
         // create three elements for each family, one for the whole family, one to hold the name, and one to hold the bunnies
         // your HTML Element should look like this:
         // <div class="family">
@@ -35,5 +35,6 @@ function displayFamilies() {
     // append the bunniesEl and nameEl to the familyEl
 
     // append the familyEl to the familiesEl
-}
+
 displayFamilies();
+getFamilies();
