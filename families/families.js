@@ -14,13 +14,28 @@ export async function displayFamilies() {
     familiesEl.textContent = '';
     // clear out the familiesEl
     const families = await getFamilies();
+    const bunniesEl = document.createElement('div');
 
     for (let family of families) {
         const familyEl = document.createElement('div');
         const h3 = document.createElement('h3');
         h3.textContent = family.name;
         familyEl.classList.add('family');
-        familyEl.append(h3);
+
+        for (let bunny of family.fuzzy_bunnies) {
+            const bunnyEl = document.createElement('div');
+            bunnyEl.classList.add('bunny');
+            bunnyEl.textContent = bunny.name;
+
+            bunnyEl.addEventListener('click', async () => {
+                await deleteBunny(bunny.id);
+
+                const updatedFamilies = await getFamilies();
+                displayFamilies(updatedFamilies);
+            });
+            bunniesEl.append(bunnyEl);
+        }
+        familyEl.append(h3, bunniesEl);
         familiesEl.append(familyEl);
         console.log(familiesEl);
     }
