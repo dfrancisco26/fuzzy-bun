@@ -20,6 +20,7 @@ form.addEventListener('submit', async (e) => {
     await createBunny({ name: name, family_id: familyId });
 
     form.reset();
+    window.location.replace('../families');
 });
 
 window.addEventListener('load', async () => {
