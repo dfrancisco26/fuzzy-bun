@@ -21,7 +21,7 @@ export async function getFamilies() {
 
 export async function deleteBunny(id) {
     // delete a single bunny using the id argument
-
+    const response = await client.from('fuzzy_bunnies').delete().match({ id: id }).single();
     return checkError(response);
 }
 
@@ -30,9 +30,7 @@ export async function createBunny(bunny) {
     const response = await client.from('fuzzy_bunnies').insert(bunny);
     if (response.data) {
         return response.data;
-    } else {
-        console.error(response.error);
-    }
+    } 
     return checkError(response);
 }
 
