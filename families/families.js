@@ -37,7 +37,6 @@ export async function displayFamilies() {
         }
         familyEl.append(h3, bunniesEl);
         familiesEl.append(familyEl);
-        console.log(familiesEl);
     }
 }
     //}
